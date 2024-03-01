@@ -26,6 +26,7 @@ RegisterNumber:212222230167
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.metrics import mean_absolute_error,mean_squared_error,r2_score
 df = pd.read_csv("/content/score_updated.csv")
 df.head(10)
 plt.scatter(df['Hours'],df['Scores'])
@@ -48,13 +49,18 @@ plt.ylabel('Scores')
 plt.plot(X_train,lr.predict(X_train),color='red')
 lr.coef_
 lr.intercept_
+mse = mean_squared_error(Y_test,y_pred)
+rmse = np.sqrt(mse)
+mae = mean_absolute_error(Y_test,y_pred)
+r2 = r2_score(Y_test,y_pred)
+print("MSE:",mse)
+print("RMSE:",rmse)
+print("MAE:",mae)
+print("R2:",r2)
 ```
 ## Output:
 ### df.head()
 ![Screenshot 2024-02-25 205647](https://github.com/Vasanthamukilan/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/119559694/73abbc99-a88c-45f6-8ee5-75a212cae3a0)
-
-### df.tail()
-![Screenshot 2024-02-25 210329](https://github.com/Vasanthamukilan/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/119559694/bfa6d3cf-96e5-4f84-a538-3a315c65f08d)
 
 ### GRAPH OF PLOTTED DATA
 ![Screenshot 2024-02-25 210355](https://github.com/Vasanthamukilan/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/119559694/a37a11a9-0af3-4236-bcfa-cfcffdcf9621)
@@ -70,5 +76,9 @@ lr.intercept_
 
 ### COEFFICIENT AND INTERCEPT VALUES
 ![Screenshot 2024-02-25 210502](https://github.com/Vasanthamukilan/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/119559694/cde7d44c-94d6-48ca-a89b-3b0b557d1239)
+
+### Value of MSE,RMSE,MAE & R2
+![Screenshot 2024-03-01 083232](https://github.com/Vasanthamukilan/Implementation-of-Simple-Linear-Regression-Model-for-Predicting-the-Marks-Scored/assets/119559694/a2243695-029d-4c66-be79-f09422343895)
+
 ## Result:
 Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
